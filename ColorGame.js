@@ -1,4 +1,4 @@
-var numSquares = 6;
+var numSquares = 9;
 var colors = [];
 var pickedColor;
 var squares = document.querySelectorAll(".square");
@@ -22,8 +22,17 @@ function setupModeButtons(){
 		modeButtons[i].addEventListener("click", function(){
 			modeButtons[0].classList.remove("selected");
 			modeButtons[1].classList.remove("selected");
+			modeButtons[2].classList.remove("selected");
 			this.classList.add("selected");
-			this.textContent === "Easy" ? numSquares = 3: numSquares = 6;
+			if(this.textContent === "Easy"){
+				numSquares = 3;
+			}else{
+				numSquares = 6;
+			}
+			if(this.textContent === "ExtraHard"){
+				numSquares = 9;
+			}
+			
 			reset();
 		});
 	}
@@ -102,11 +111,13 @@ function generateRandomColors(num){
 
 function randomColor(){
 	//pick a "red" from 0 - 255
-	var r = Math.floor(Math.random() * 256);
+	var r = Math.floor(Math.random() * 500);
 	//pick a "green" from  0 -255
-	var g = Math.floor(Math.random() * 256);
+	var g = Math.floor(Math.random() * 400);
 	//pick a "blue" from  0 -255
-	var b = Math.floor(Math.random() * 256);
+	var b = Math.floor(Math.random() * 300);
+
+
 	return "rgb(" + r + ", " + g + ", " + b + ")";
 }
 
